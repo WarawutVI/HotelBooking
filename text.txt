@@ -1,0 +1,7 @@
+Server 
+- expresss 
+-nodemon
+
+
+mogodb 
+pass : rzoLkFv0WQTbXvWc

@@ -3,7 +3,7 @@ const mongoose =require('mongoose');
 
 
 
-const roomSchema = new mongoose.Schema({
+const roomSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -16,14 +16,8 @@ const roomSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    imageurls: {
-        type: Array,
-        default: []
-    },
-    currentbookings: {
-        type: Array,
-        default: []
-    },
+    imageurls: [],
+    currentbookings: [],
     type: {
         type: String,
         required: true
@@ -31,11 +25,15 @@ const roomSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    rentperday: {
+        type: Number,
+        required: true
     }
 }, {
-    timestamps: true,
-    collection: 'rooms'  
+    timestamps: true
 });
+
 
 
 const Room = mongoose.model('Room', roomSchema);

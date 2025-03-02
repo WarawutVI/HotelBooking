@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Room from "../components/Room";
 
 function Homescreen() {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState([]); // Ensures `rooms` is always an array
 
   useEffect(() => {
     const fetchRooms = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/rooms/getallrooms");
-        setRooms(response.data.rooms); // Make sure your API returns an object with a "rooms" field
-        console.log(response.data);
+        console.log("API Response:", response.data); // Log response to check its structure
+        
+        // If response.data is an array directly, setRooms(response.data)
+        if (Array.isArray(response.data)) {
+          setRooms(response.data);
+        } else if (Array.isArray(response.data.rooms)) {
+          setRooms(response.data.rooms);
+        } else {
+          console.error("Unexpected API response structure:", response.data);
+          setRooms([]); // Set to empty array if structure is incorrect
+        }
       } catch (error) {
         console.error("Error fetching rooms:", error);
       }
@@ -20,34 +30,15 @@ function Homescreen() {
 
   return (
     <div>
-      <h1>Home</h1>
-      <br />
-
+       <div className="container">
+      <h1 className="mt-4">Booking</h1>
       {rooms.length > 0 ? (
-        rooms.map((room, index) => (
-          <div key={index} style={{ border: "1px solid gray", padding: "10px", margin: "10px" }}>
-            <h2>{room.name}</h2>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
-              {room.imageurls.map((imgUrl, imgIndex) => (
-                <img 
-                  key={imgIndex}
-                  src={imgUrl}
-                  alt={`${room.name} ${imgIndex}`}
-                  style={{ width: "300px", height: "200px", borderRadius: "10px", marginRight: "10px", marginBottom: "10px" }}
-                />
-              ))}
-            </div>
-            <p>{room.description}</p>
-            <p><strong>Max Guests:</strong> {room.maxcount}</p>
-            <p><strong>Phone:</strong> {room.phonenumber}</p>
-            <p><strong>Price per Day:</strong> ${room.rentperday}</p>
-            <br />
-            <hr />
-          </div>
-        ))
+        rooms.map((room, index) => <Room key={index} room={room} />)
       ) : (
         <p>Loading rooms...</p>
       )}
+    </div>
+      
     </div>
   );
 }

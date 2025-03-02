@@ -24,7 +24,7 @@ function Navbar() {
             
         
        
-            <li class="nav-item"><a className="nav-link active"style={{ color: "gray" }}aria-current="page"href="#"> Home</a></li>
+            <li class="nav-item"><a className="nav-link active"style={{ color: "gray" }}aria-current="page"href="/home"> Home</a></li>
              <li class="nav-item"><a class="nav-link" href="/op1">Option1</a></li>
              <li class="nav-item"><a class="nav-link" href="/op1">Option2</a></li>
               <li class="nav-item">

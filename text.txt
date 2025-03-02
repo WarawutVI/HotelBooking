@@ -1,7 +1,13 @@
 Server 
 - expresss 
 -nodemon
-
+-mongoose
+-cors
 
 mogodb 
 pass : rzoLkFv0WQTbXvWc
+
+
+client
+-react-router-dom
+-axios

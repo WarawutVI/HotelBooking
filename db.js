@@ -7,7 +7,7 @@ mongoose.connect(mongooseURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log(mongooseURL))
+  .then(() => console.log("Connect with Mongobd"))
   .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 module.exports = mongoose;

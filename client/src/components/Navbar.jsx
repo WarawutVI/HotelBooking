@@ -6,11 +6,7 @@ function Navbar() {
       <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">Hotel</a>
-        <div class ="box-op">
-        <a className="nav-link active"style={{ color: "gray" }}aria-current="page"href="#"> Home</a>
-        <a class="nav-link" href="/loging">Option1</a>
-        <a class="nav-link" href="/loging">Option1</a>
-        </div>
+      
       
           <button
             class="navbar-toggler"
@@ -25,7 +21,12 @@ function Navbar() {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-             
+            
+        
+       
+            <li class="nav-item"><a className="nav-link active"style={{ color: "gray" }}aria-current="page"href="#"> Home</a></li>
+             <li class="nav-item"><a class="nav-link" href="/op1">Option1</a></li>
+             <li class="nav-item"><a class="nav-link" href="/op1">Option2</a></li>
               <li class="nav-item">
                 <a class="nav-link" href="/register">
                   Registr

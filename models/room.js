@@ -4,32 +4,37 @@ const mongoose =require('mongoose');
 
 
 const roomSchema = mongoose.Schema({
-    name: {
+    name: { // room number
         type: String,
         required: true
     },
-    maxcount: {
+    maxcount: { 
         type: Number,
         required: true
     },
     phonenumber: {
-        type: Number,
+        type: String, // change Data type
         required: true
     },
     imageurls: [],
     currentbookings: [],
     type: {
         type: String,
-        required: true
+        required: true // delete
     },
     description: {
-        type: String,
+        type: String, //delete
         required: true
     },
     rentperday: {
         type: Number,
         required: true
+    },
+    amount:{
+        type:Number,
+        require:true
     }
+
 }, {
     timestamps: true
 });

@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import { Modal, Button, Carousel } from "react-bootstrap";
+import React from "react";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom"; // For React Router v6
 
 function Room({ room }) {
-  const [show, setShow] = useState(false); // Modal state
+  const navigate = useNavigate(); // Initialize navigate
 
-  const handleClose = () => setShow(false); // Close modal
-  const handleShow = () => setShow(true); // Open modal
+  const handleViewDetails = () => {
+    // Remove spaces from the room name and navigate to the room's standalone page
+    const roomNameWithoutSpaces = room.name.replace(/\s+/g, ''); // Remove spaces
+    navigate(`/rooms/${roomNameWithoutSpaces}`); // Navigate to the specific page of the room
+  };
 
   return (
     <div className="container mt-3">
@@ -24,48 +28,21 @@ function Room({ room }) {
         <div className="col-md-8">
           <h2>{room.name}</h2>
           <p><b>Max Count:</b> {room.maxcount}</p>
-          <p><b>Phone number:</b> {room.phonenumber}</p>
           <p><b>Type:</b> {room.type}</p>
           <p><b>Rent per day:</b> ${room.rentperday}</p>
 
-          {/* Buttons - Now directly under Rent per day */}
-          <div className="mt-2">
-            <Button className="btn btn-primary" onClick={handleShow}>
-              View Details
-            </Button>
-          </div>
+          {/* Check if the room is unavailable (amount === 0) */}
+          {room.amount === 0 ? (
+            <p className="text-danger">Unavailable</p> // Show "Unavailable" if amount is 0
+          ) : (
+            <div className="mt-2">
+              <Button className="btn btn-primary" onClick={handleViewDetails}>
+                View Details
+              </Button>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Modal */}
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>{room.name} - Details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* Bootstrap Carousel for images */}
-          <Carousel>
-            {room.imageurls.map((imgUrl, index) => (
-              <Carousel.Item key={index}>
-                <img
-                  className="d-block w-100"
-                  src={imgUrl}
-                  alt={`Slide ${index + 1}`}
-                  style={{ borderRadius: "10px", maxHeight: "300px", objectFit: "cover" }}
-                />
-              </Carousel.Item>
-            ))}
-          </Carousel>
-
-          <p className="mt-3"><b>Description:</b> {room.description}</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary">Book Now</Button>
-        </Modal.Footer>
-      </Modal>
     </div>
   );
 }

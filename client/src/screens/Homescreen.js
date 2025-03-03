@@ -30,15 +30,14 @@ function Homescreen() {
 
   return (
     <div>
-       <div className="container">
-      <h1 className="mt-4">Booking</h1>
-      {rooms.length > 0 ? (
-        rooms.map((room, index) => <Room key={index} room={room} />)
-      ) : (
-        <p>Loading rooms...</p>
-      )}
-    </div>
-      
+      <div className="container">
+        <h1 className="mt-4">Rooms</h1>
+        {rooms.length > 0 ? (
+          rooms.map((room, index) => <Room key={index} room={room} />)
+        ) : (
+          <p>Loading rooms...</p>
+        )}
+      </div>
     </div>
   );
 }

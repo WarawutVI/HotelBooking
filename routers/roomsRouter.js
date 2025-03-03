@@ -18,10 +18,10 @@ router.get("/getallrooms", async (req, res) => {
 
 router.post('/addroom', async (req, res) => {
     try {
-        const { name, maxcount, phonenumber, imageurls, type, description,rentperday } = req.body;
+        const { name, maxcount, phonenumber, imageurls, type, description,rentperday,amount } = req.body;
 
         // Validate data
-        if (!name || !maxcount || !phonenumber || !type || !description || !rentperday) {
+        if (!name || !maxcount || !phonenumber || !type || !description || !rentperday|| !amount) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
@@ -34,7 +34,8 @@ router.post('/addroom', async (req, res) => {
             currentbookings: [],
             type,
             description,
-            rentperday
+            rentperday,
+            amount
         });
 
         await newRoom.save();

@@ -10,6 +10,8 @@ import DeluxeCalRoomscreen from './screens/DeluxeCanalRoomscreen'
 import Registerscreen from './screens/Registerscreen';
 import Loginscreen from './screens/Loginscreen';
 import Roomscreen from './screens/Roomscreen';
+import Superiorbooking from './screens/booking/Superiorbooking';
+
 
 // Example room data (you can replace this with dynamic data or fetch from API)
 
@@ -65,6 +67,7 @@ function App() {
           <Route path="/rooms/Deluxecanalroom" element={<DeluxeCalRoomscreen />} />
           <Route path="/register" element={<Registerscreen />} />
           <Route path="/login" element={<Loginscreen />} />
+          <Route path='/booking/superior' element={<Superiorbooking/>}/>
         </Routes>
       </BrowserRouter>
     </div>

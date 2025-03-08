@@ -14,8 +14,6 @@ function Loginscreen() {
       console.log("Login Successful:", data);
       localStorage.setItem("currentUser", JSON.stringify(data)); // Store user in localStorage
       alert("Login successful");
-      
-      // Redirect to homepage after login (optional)
       window.location.href = "/home";  
     } catch (error) {
       console.error("Login failed:", error);
@@ -30,14 +28,14 @@ function Loginscreen() {
           <div className="col-md-5">
             <h1>Login</h1>
             <input
-              type="emaill" // Ensures only valid emails are entered
+              type="emaill" 
               className="form-control"
               placeholder="Emaill"
               value={emaill}
               onChange={(e) => setEmaill(e.target.value)}
             />
             <input
-              type="password" // Secures password input
+              type="password" 
               className="form-control"
               placeholder="Password"
               value={password}

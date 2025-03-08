@@ -7,6 +7,11 @@ import Room from './components/Room'; // Import the Room component
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DeluxeCalRoomscreen from './screens/DeluxeCanalRoomscreen'
+import Registerscreen from './screens/Registerscreen';
+import Loginscreen from './screens/Loginscreen';
+import Roomscreen from './screens/Roomscreen';
+import Superiorbooking from './screens/booking/Superiorbooking';
+
 
 // Example room data (you can replace this with dynamic data or fetch from API)
 
@@ -43,7 +48,7 @@ function App() {
         <Routes>
           {/* Home Route */}
           <Route path="/home" element={<Homescreen />} />
-
+          <Route path="/room" element={<Roomscreen />} />
           {/* Route for rooms list */}
           <Route
             path="/rooms"
@@ -60,7 +65,9 @@ function App() {
           {/* Individual Room Routes */}
           <Route path="/rooms/Superiorclassicroom" element={<SuperiorClassicRoomscreen />} />
           <Route path="/rooms/Deluxecanalroom" element={<DeluxeCalRoomscreen />} />
-     
+          <Route path="/register" element={<Registerscreen />} />
+          <Route path="/login" element={<Loginscreen />} />
+          <Route path='/booking/superior' element={<Superiorbooking/>}/>
         </Routes>
       </BrowserRouter>
     </div>

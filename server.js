@@ -6,10 +6,12 @@ const app= express();
 
 const dbconfig =require('./db');
 const roomsRoute =require('./routers/roomsRouter')
+const userRoute =require('./routers/usersRouter')
 app.use(cors()); // Allow frontend to connect to backend
 
 app.use(express.json());
 app.use('/api/rooms',roomsRoute)
+app.use('/api/users',userRoute)
 
 const port =process.env.PORT|| 5000;
 

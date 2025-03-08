@@ -33,6 +33,7 @@ function Registerscreen() {
             const { data } = await axios.post("http://localhost:5000/api/users/register", user);
             console.log("User registered:", data);
             alert('Register successful');
+            window.location.href = "/login";
         } catch (error) {
             console.error("Registration error:", error);
             alert('Registration failed. Please try again.');

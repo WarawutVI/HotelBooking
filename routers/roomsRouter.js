@@ -15,6 +15,29 @@ router.get("/getallrooms", async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 });
+router.get("/getroomsbytype/:type", async (req, res) => {
+  try {
+    const { type } = req.params;
+
+    // Check if type is provided
+    if (!type) {
+      return res.status(400).json({ message: "Room type is required" });
+    }
+
+    // Fetch rooms by type
+    const rooms = await Room.find({ type });
+
+    if (rooms.length === 0) {
+      return res.status(404).json({ message: "No rooms found for this type" });
+    }
+
+    return res.json(rooms);
+  } catch (error) {
+    console.error("Error fetching rooms by type:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 
 // router.get("/getroomsbytype/:type", async (req, res) => {
 //   try {
@@ -31,63 +54,66 @@ router.get("/getallrooms", async (req, res) => {
 //     return res.status(500).json({ message: "Internal Server Error" });
 //   }
 // });
-router.get("/getroomsbytype/Superior", async (req, res) => {
-  try {
-    const rooms = await Room.find({ type: 'Superior' });
+// router.get("/getroomsbytype/Superior", async (req, res) => {
+//   try {
+//     const rooms = await Room.find({ type: 'Superior' });
 
-    if (rooms.length === 0) {
-      return res.status(404).json({ message: "No rooms found for this type" });
-    }
+//     if (rooms.length === 0) {
+//       return res.status(404).json({ message: "No rooms found for this type" });
+//     }
 
-    return res.json(rooms);
-  } catch (error) {
-    console.error("Error fetching rooms by type:", error);
-    return res.status(500).json({ message: "Internal Server Error" });
-  }
-});
+//     return res.json(rooms);
+//   } catch (error) {
+//     console.error("Error fetching rooms by type:", error);
+//     return res.status(500).json({ message: "Internal Server Error" });
+//   }
+// });
 
 
 
 router.put("/updateroom/:type", async (req, res) => {
   try {
     const { type } = req.params;
-    const { startDate, endDate, amount } = req.body;
+    const { startDate, endDate, amount, name, breakfast, extraServices, totalPrice } = req.body;
 
-    if (!startDate || !endDate || !amount) {
-      return res
-        .status(400)
-        .json({ message: "Start date, end date, and amount are required" });
+    // Validate required fields
+    if (!startDate || !endDate || !amount || !name || totalPrice == null) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    // Ensure amount is a valid number
+    const parsedAmount = parseInt(amount, 10);
+    if (isNaN(parsedAmount) || parsedAmount <= 0) {
+      return res.status(400).json({ message: "Invalid amount" });
     }
 
     if (new Date(startDate) >= new Date(endDate)) {
-      return res
-        .status(400)
-        .json({ message: "End date must be after start date" });
+      return res.status(400).json({ message: "End date must be after start date" });
     }
 
     const room = await Room.findOne({ type });
 
     if (!room) {
-      return res
-        .status(404)
-        .json({ message: "No available room found for this type" });
+      return res.status(404).json({ message: "No available room found for this type" });
     }
 
-    if (amount > room.amount) {
-      return res
-        .status(400)
-        .json({ message: `We only have ${room.amount} rooms available!` });
+    if (parsedAmount > room.amount) {
+      return res.status(400).json({ message: `Only ${room.amount} rooms available!` });
     }
 
     // Create new booking
     const newBooking = {
+      name,
       startDate,
       endDate,
-      amount,
+      amount: parsedAmount,
+      breakfast,
+      extraServices,
+      totalPrice,
     };
 
     room.currentbookings.push(newBooking);
-    room.amount -= amount; // Reduce available rooms
+    room.amount -= parsedAmount; // Reduce available rooms
 
     await room.save();
 

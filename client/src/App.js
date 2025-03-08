@@ -11,6 +11,7 @@ import Registerscreen from './screens/Registerscreen';
 import Loginscreen from './screens/Loginscreen';
 import Roomscreen from './screens/Roomscreen';
 import Superiorbooking from './screens/booking/Superiorbooking';
+import Deluxecanalbooking from './screens/booking/Deluxecanalbooking';
 
 
 // Example room data (you can replace this with dynamic data or fetch from API)
@@ -19,28 +20,7 @@ import Superiorbooking from './screens/booking/Superiorbooking';
 function App() {
   const [rooms, setRooms] = useState([]); // Ensures `rooms` is always an array
 
-  useEffect(() => {
-    const fetchRooms = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/rooms/getallrooms");
-        console.log("API Response:", response.data); // Log response to check its structure
-        
-        // If response.data is an array directly, setRooms(response.data)
-        if (Array.isArray(response.data)) {
-          setRooms(response.data);
-        } else if (Array.isArray(response.data.rooms)) {
-          setRooms(response.data.rooms);
-        } else {
-          console.error("Unexpected API response structure:", response.data);
-          setRooms([]); // Set to empty array if structure is incorrect
-        }
-      } catch (error) {
-        console.error("Error fetching rooms:", error);
-      }
-    };
-
-    fetchRooms();
-  }, []);
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -68,6 +48,7 @@ function App() {
           <Route path="/register" element={<Registerscreen />} />
           <Route path="/login" element={<Loginscreen />} />
           <Route path='/booking/superior' element={<Superiorbooking/>}/>
+          <Route path='/booking/deluxecanal' element={<Deluxecanalbooking/>}/>
         </Routes>
       </BrowserRouter>
     </div>

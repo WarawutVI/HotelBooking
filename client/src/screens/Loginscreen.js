@@ -14,7 +14,11 @@ function Loginscreen() {
       console.log("Login Successful:", data);
       localStorage.setItem("currentUser", JSON.stringify(data)); // Store user in localStorage
       alert("Login successful");
-      window.location.href = "/home";  
+      if (data.isAdmin) { 
+        window.location.href = "/admin"; // Redirect to the admin panel if the user is an admin
+      } else {
+        window.location.href = "/home"; // Redirect to home page for regular users
+      }
     } catch (error) {
       console.error("Login failed:", error);
       alert("Invalid emaill or password. Please try again.");

@@ -20,10 +20,10 @@ module.exports = router;
 
 
 router.post("/login", async (req, res) => {
-    const { emaill, password } = req.body; // Fixed 'emaill' to 'email'
+    const { emaill, password } = req.body; 
 
     try {
-        const user = await User.findOne({ emaill }); // Ensure correct field name
+        const user = await User.findOne({ emaill }); 
 
         if (!user) {
             return res.status(400).json({ message: "User not found" });
@@ -34,7 +34,8 @@ router.post("/login", async (req, res) => {
             _id: user._id,
             name: user.name,
             emaill: user.emaill,
-        }); // Sending only necessary user details
+            isAdmin: user.isAdmin,
+        }); 
     } catch (error) {
         console.error("Login error:", error);
         return res.status(500).json({ message: "Internal server error" });

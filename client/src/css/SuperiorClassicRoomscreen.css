@@ -1,0 +1,135 @@
+.room-detail {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* ใช้ Flexbox ให้รูปและข้อความอยู่คนละฝั่ง */
+.room-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
+
+/* รูปภาพห้องพัก */
+.room-image {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.room-photo {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ปุ่มเลื่อนรูป */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* ส่วน Header */
+.room-header {
+    flex: 1;
+    text-align: left;
+}
+
+.room-header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.room-header p {
+    font-size: 1.2em;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ข้อมูลห้องพัก */
+.room-info {
+    margin-top: 40px;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.room-info h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* ใช้ Grid ให้รายการสิ่งอำนวยความสะดวกดูเป็นระเบียบ */
+.room-info ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.room-info li {
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+}
+
+.room-info li::before {
+    content: "✔";
+    color: #27ae60;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.Button1{
+    display: flex;
+    justify-content: center;  /* จัดกึ่งกลางในแนวนอน */
+    align-items: center;      /* จัดกึ่งกลางในแนวตั้ง */
+    height: 10vh;            /* ให้ความสูงของ container เท่ากับความสูงของหน้าจอ */
+}
+
+.button1{
+    margin-top: 460px;
+    padding: 14px 40px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 260px; /* กำหนดขนาดปุ่ม */
+    text-align: center;
+    margin: 500px;
+}

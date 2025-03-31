@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../css/Narbar.css'
 function Navbar() {
   const user = JSON.parse(localStorage.getItem("currentUser") || "null");
 
@@ -7,64 +7,81 @@ function Navbar() {
     localStorage.removeItem("currentUser");
     window.location.href = "/login"; // Redirect to login after logout
   }
+window.addEventListener("scroll", function () {
+    var header = document.querySelector("header.navbar");
+    if (window.scrollY > 50) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
+    }
+   });
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/home">Hotel</a>
+      <header class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand me-auto" href="index.html">LOGO</a> 
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="translation-controls">
+                <div id="google_translate_element"></div>
+                <button class="reset-language-btn" onclick="resetToDefaultLanguage()">English</button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/room" role="button" aria-expanded="false">
+                            Rooms
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Superior Classic Room</a></li>
+                            <li><a class="dropdown-item" href="#">Deluxe Canal Room</a></li>
+                            <li><a class="dropdown-item" href="#">Grand Deluxe Room</a></li>
+                            <li><a class="dropdown-item" href="#">Diplomat Room</a></li>
+                            <li><a class="dropdown-item" href="#">Nouvo Suites</a></li>
+                        </ul>
+                    </li>
 
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link active" style={{ color: "gray" }} aria-current="page" href="/room">
-                  Room
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/op1">Option1</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/op2">Option2</a>
-              </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="service.html" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Service & Facilities
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="facilities-services/restaurants.html">Restaurants</a>
+                            </li>
+                            <li><a class="dropdown-item" href="facilities-services/swimming-pool.html">Swimming
+                                    Pools</a></li>
+                            <li><a class="dropdown-item" href="facilities-services/guest-services.html">Guest
+                                    Services</a></li>
+                        </ul>
+                    </li>
 
-              {user ? (
-                <>
-                  <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {user.name}
-                    </a>
-                    <ul className="dropdown-menu" aria-labelledby="userDropdown">
-                      <li><button className="dropdown-item" onClick={logout}>Logout</button></li>
-                    </ul>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/register">Register</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="/login">Login</a>
-                  </li>
-                </>
-              )}
-            </ul>
-          </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Meetings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="login-container ms-3">
+                    <button class="login-btn"><a href="/login">Login</a></button> 
+                </div>
+            </div>
         </div>
-      </nav>
+    </header>
     </div>
   );
 }

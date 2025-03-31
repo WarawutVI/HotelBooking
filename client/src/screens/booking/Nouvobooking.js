@@ -6,7 +6,7 @@ function UpdateRoomBooking() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [amount, setAmount] = useState(1);
-  const [roomType, setRoomType] = useState("Deluxe");
+  const [roomType, setRoomType] = useState("Nouvo");
   const [breakfast, setBreakfast] = useState(false);
   const [extraServices, setExtraServices] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -123,7 +123,7 @@ function UpdateRoomBooking() {
 
   return (
     <div className="container mt-5" style={{display:"grid"}}>
-      <h2>Deluxe canal room</h2>
+      <h2>Nouvo Grand Suite</h2>
 
 
       {/* Room Price */}

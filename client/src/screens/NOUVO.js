@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import "../css/DELUXE.css";
+import "../css/NOUVO.css";
 import { useNavigate } from "react-router-dom";
-const DELUXE = () => {
+const NOUVO = () => {
   const navigate = useNavigate();
+
   const images = [
-    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/1-gdt-1-620x400.jpg",
-    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/2-dld-599x400.jpg",
-    "https://lh3.googleusercontent.com/proxy/Y7XaDMYktAdpyjFdthYjNdQ-yg0oYvLVhZMvF1qF83_v1wp2k0TKn2Ej4uBtEaIF7m-XaB0QVcPpVCcCiS0DMb0PGMlajcSm1EkYmMtmHDIszigN-Zzz-_AyqA",
+    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/suite_diplomat.jpg",
+    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/5-gdt-600x400.jpg",
+    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/11-dlx-594x400.jpg",
   ];
 
   // สร้าง State สำหรับติดตามรูปปัจจุบัน
@@ -39,12 +40,18 @@ const DELUXE = () => {
 
         {/* Header */}
         <header className="room-header">
-          <h1>DELUXE CANAL ROOM</h1>
+          <h1>NOUVO GRAND SUITE</h1>
           <p>
-            Beautiful rooms with relaxing views of the historic Banglamphu canal
-            make this 32 square meter room a must-stay. With its wide bathrooms,
-            comfortable furnishings, and bright atmosphere, the Deluxe Canal
-            Room is perfect for those who seek a relaxing environment.
+            Our hotel’s masterpiece. The Nouvo Grand Suite is a two-bedroom
+            suite suitable for families that want to experience the best of what
+            Bangkok has to offer while relaxing in stylish decor settings. An
+            en-suite Jacuzzi tub, complimentary Wi-Fi Internet, satellite
+            television programming on large-screen LCD televisions, and 24-hour
+            room service are among the many amenities and services provided for
+            you during your stay. Each of our 2 Nouvo Grand Suites (Rama 8
+            Bridge Suite and Golden Mount Suite) consist of one suite room (70
+            sqm.) connected with one Grand Deluxe room (32 sqm.) for a total
+            size of 102 square meters.
           </p>
           <p>
             <strong>Note:</strong> This room type will have limited natural
@@ -59,7 +66,7 @@ const DELUXE = () => {
         <h2>ROOM DETAIL</h2>
         <ul>
           <li>
-            <strong>Room Size:</strong> 32 square meters
+            <strong>Room Size:</strong> 102 square meters
           </li>
           <li>
             <strong>Non-smoking room</strong>
@@ -70,11 +77,13 @@ const DELUXE = () => {
           <ul>
             <li>Air-conditioner</li>
             <li>IDD telephone</li>
+            <li>En-suite private jacuzzi</li>
+            <li>DVD player</li>
             <li>Complimentary Wi-Fi Internet</li>
             <li>Mini-bar and fridge</li>
             <li>Hair dryer</li>
             <li>Hot and cold shower</li>
-            <li>Table and chairs</li>
+            <li>Desk and working area</li>
             <li>Complete bathroom amenities</li>
             <li>In-room safety deposit box</li>
             <li>Bathrobe and slippers</li>
@@ -84,13 +93,14 @@ const DELUXE = () => {
         </ul>
       </section>
 
+      {/* Booking Section */}
       <section className="Button1">
         {/* <button className="button1" onClick={() => alert("Booking Confirmed!")}>
           Book Now
         </button> */}
         <button 
         className="btn btn-primary mt-3"
-        onClick={() => navigate(`/booking/${"deluxecanal"}`)} // Navigate with type parameter
+        onClick={() => navigate(`/booking/${"nouvo"}`)} // Navigate with type parameter
       >
         Book Now 
       </button>
@@ -99,4 +109,4 @@ const DELUXE = () => {
   );
 };
 
-export default DELUXE;
+export default NOUVO;

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "../css/DELUXE.css";
+import "../css/DIPLOMAT.css";
 import { useNavigate } from "react-router-dom";
-const DELUXE = () => {
+const DIPLOMAT = () => {
   const navigate = useNavigate();
   const images = [
-    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/1-gdt-1-620x400.jpg",
-    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/2-dld-599x400.jpg",
-    "https://lh3.googleusercontent.com/proxy/Y7XaDMYktAdpyjFdthYjNdQ-yg0oYvLVhZMvF1qF83_v1wp2k0TKn2Ej4uBtEaIF7m-XaB0QVcPpVCcCiS0DMb0PGMlajcSm1EkYmMtmHDIszigN-Zzz-_AyqA",
+    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/1-dld.jpg",
+    "https://www.nouvocityhotel.com/wp-content/uploads/2018/08/4a-dld-661x400.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ94EzOZ9Tbk4lts73rXfTeuScuJbQowqyl3Q&s",
   ];
 
   // สร้าง State สำหรับติดตามรูปปัจจุบัน
@@ -39,12 +39,11 @@ const DELUXE = () => {
 
         {/* Header */}
         <header className="room-header">
-          <h1>DELUXE CANAL ROOM</h1>
+          <h1>DIPLOMAT ROOM</h1>
           <p>
-            Beautiful rooms with relaxing views of the historic Banglamphu canal
-            make this 32 square meter room a must-stay. With its wide bathrooms,
-            comfortable furnishings, and bright atmosphere, the Deluxe Canal
-            Room is perfect for those who seek a relaxing environment.
+            Business and leisure in a comfortable setting complete with a work
+            area and complimentary in-room Wi-Fi Internet. Our Diplomat rooms
+            are ready to help make your trip both productive and enjoyable.
           </p>
           <p>
             <strong>Note:</strong> This room type will have limited natural
@@ -59,7 +58,7 @@ const DELUXE = () => {
         <h2>ROOM DETAIL</h2>
         <ul>
           <li>
-            <strong>Room Size:</strong> 32 square meters
+            <strong>Room Size:</strong> 38 square meters
           </li>
           <li>
             <strong>Non-smoking room</strong>
@@ -74,7 +73,7 @@ const DELUXE = () => {
             <li>Mini-bar and fridge</li>
             <li>Hair dryer</li>
             <li>Hot and cold shower</li>
-            <li>Table and chairs</li>
+            <li>Desk and working area</li>
             <li>Complete bathroom amenities</li>
             <li>In-room safety deposit box</li>
             <li>Bathrobe and slippers</li>
@@ -84,13 +83,14 @@ const DELUXE = () => {
         </ul>
       </section>
 
+      {/* Booking Section */}
       <section className="Button1">
         {/* <button className="button1" onClick={() => alert("Booking Confirmed!")}>
           Book Now
         </button> */}
         <button 
         className="btn btn-primary mt-3"
-        onClick={() => navigate(`/booking/${"deluxecanal"}`)} // Navigate with type parameter
+        onClick={() => navigate(`/booking/${"diplomat"}`)} // Navigate with type parameter
       >
         Book Now 
       </button>
@@ -99,4 +99,4 @@ const DELUXE = () => {
   );
 };
 
-export default DELUXE;
+export default DIPLOMAT;

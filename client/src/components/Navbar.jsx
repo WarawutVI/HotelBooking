@@ -1,87 +1,75 @@
 import React from "react";
-import '../css/Narbar.css'
+import '../css/Navbar.css'; // Import the custom CSS file
+
 function Navbar() {
   const user = JSON.parse(localStorage.getItem("currentUser") || "null");
 
   function logout() {
     localStorage.removeItem("currentUser");
-    window.location.href = "/login"; // Redirect to login after logout
+    window.location.href = "/login"; 
   }
-window.addEventListener("scroll", function () {
-    var header = document.querySelector("header.navbar");
-    if (window.scrollY > 50) {
-        header.classList.add("sticky");
-    } else {
-        header.classList.remove("sticky");
-    }
-   });
+
+  function resetToDefaultLanguage() {
+    // Logic to reset the language goes here
+    console.log("Language reset to default");
+    // You can add more logic as needed
+  }
 
   return (
     <div>
-      <header class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand me-auto" href="index.html">LOGO</a> 
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="translation-controls">
-                <div id="google_translate_element"></div>
-                <button class="reset-language-btn" onclick="resetToDefaultLanguage()">English</button>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/room" role="button" aria-expanded="false">
-                            Rooms
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Superior Classic Room</a></li>
-                            <li><a class="dropdown-item" href="#">Deluxe Canal Room</a></li>
-                            <li><a class="dropdown-item" href="#">Grand Deluxe Room</a></li>
-                            <li><a class="dropdown-item" href="#">Diplomat Room</a></li>
-                            <li><a class="dropdown-item" href="#">Nouvo Suites</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="service.html" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Service & Facilities
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="facilities-services/restaurants.html">Restaurants</a>
-                            </li>
-                            <li><a class="dropdown-item" href="facilities-services/swimming-pool.html">Swimming
-                                    Pools</a></li>
-                            <li><a class="dropdown-item" href="facilities-services/guest-services.html">Guest
-                                    Services</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Meetings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Location</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
+      <header className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div className="container-fluid">
+          <a className="navbar-brand me-auto" href="/home">LOGO</a> 
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="translation-controls">
+            <div id="google_translate_element"></div>
+            <button className="reset-language-btn" onClick={resetToDefaultLanguage}>English</button>
+          </div>
+          <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/home">Home</a>
+              </li>
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                  Rooms
+                </a>
+                <ul className="dropdown-menu">
+                  <li><a className="dropdown-item" href="/rooms/Superiorclassicroom">Superior Classic Room</a></li>
+                  <li><a className="dropdown-item" href="/rooms/Deluxecanalroom">Deluxe Canal Room</a></li>
+                  <li><a className="dropdown-item" href="/rooms/Granddeluxeroom">Grand Deluxe Room</a></li>
+                  <li><a className="dropdown-item" href="/rooms/Diplomatroom">Diplomat Room</a></li>
+                  <li><a className="dropdown-item" href="/rooms/Nouvoroom">Nouvo Suites</a></li>
                 </ul>
-                <div class="login-container ms-3">
-                    <button class="login-btn"><a href="/login">Login</a></button> 
+              </li>
+
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                  Service & Facilities
+                </a>
+                <ul className="dropdown-menu">
+                  <li><a className="dropdown-item" href="facilities-services/restaurants.html">Restaurants</a></li>
+                  <li><a className="dropdown-item" href="facilities-services/swimming-pool.html">Swimming Pools</a></li>
+                  <li><a className="dropdown-item" href="facilities-services/guest-services.html">Guest Services</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div className="login-container">
+              {user ? (
+                <div className="login-item" >
+                  <h6 className="user-name" style={{ marginRight:"20px", marginTop:"8px"}} >{user.name}</h6>
+                  <button className="logout-btn" onClick={logout}>Logout</button>
                 </div>
+              ) : (
+                <button className="login-btn" onClick={() => window.location.href="/login"}>Login</button>
+              )}
             </div>
+          </div>
         </div>
-    </header>
+      </header>
     </div>
   );
 }

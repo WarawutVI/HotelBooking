@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import "../css/Admin.css"
 function Admin() {
   const [rooms, setRooms] = useState([]);
   const [editMode, setEditMode] = useState({}); // Track edit mode for each booking
@@ -14,7 +14,7 @@ function Admin() {
         setRooms(response.data || []);
       } catch (error) {
         console.error("Error fetching rooms:", error);
-      }
+      } 
     };
 
     fetchRooms();
@@ -84,7 +84,7 @@ function Admin() {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={{display:"grid"}}>
       <h2>Admin Panel - Room Bookings</h2>
       {rooms.length === 0 ? (
         <p>Loading rooms...</p>

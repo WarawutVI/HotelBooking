@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import '../css/LoginScreen.css'; // Make sure to import your CSS file
 
 function Loginscreen() {
   const [emaill, setEmaill] = useState("");
@@ -26,29 +28,30 @@ function Loginscreen() {
   }
 
   return (
-    <div>
-      <div className="boxcrad">
-        <div className="row justify-content-center mt-5 bs">
-          <div className="col-md-5">
-            <h1>Login</h1>
-            <input
-              type="emaill" 
-              className="form-control"
-              placeholder="Emaill"
-              value={emaill}
-              onChange={(e) => setEmaill(e.target.value)}
-            />
-            <input
-              type="password" 
-              className="form-control"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button className="btn btn-primary mt-3" onClick={login}>
-              Login
-            </button>
-          </div>
+    <div className="boxcrad">
+      <div className="row justify-content-center">
+        <div className="col-md-5">
+          <h1>Login</h1>
+          <input
+            type="email" // Corrected type to "email"
+            className="form-control mt-3"
+            placeholder="Emaill"
+            value={emaill}
+            onChange={(e) => setEmaill(e.target.value)}
+          />
+          <input
+            type="password" 
+            className="form-control mt-3"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="btn btn-primary mt-3" onClick={login}>
+            Login
+          </button>
+          <Link to="/register" className="btn btn-secondary mt-3" style={{marginLeft:"10px"}}>
+            Register
+          </Link>
         </div>
       </div>
     </div>

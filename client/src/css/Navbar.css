@@ -49,7 +49,7 @@ header.navbar {
     transition: 0.3s ease-in-out;
     padding: 5px 30px;
     z-index: 1030 !important;
-    background: red;
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
 }
 
@@ -112,7 +112,6 @@ header.navbar.sticky {
     width: 70%;
 }
 
-
 /* ===== Dropdown Menu ===== */
 .dropdown {
     position: relative;
@@ -161,6 +160,7 @@ header.navbar.sticky {
     margin-left: 15px;
 }
 
+
 .login-btn {
     background-color: var(--second-color);
     color: white;
@@ -174,6 +174,26 @@ header.navbar.sticky {
 }
 
 .login-btn:hover {
+    background-color: var(--dark-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(29, 35, 48, 0.2);
+}
+
+
+
+.logout-btn {
+    background-color: var(--second-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logout-btn:hover {
     background-color: var(--dark-navy);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(29, 35, 48, 0.2);
@@ -276,6 +296,10 @@ header.navbar.sticky {
     white-space: nowrap;
 }
 
+.login-item{
+    display:flex;
+}
+
 .reset-language-btn:hover {
     background-color: var(--second-color);
     color: white;
@@ -311,6 +335,9 @@ header.navbar.sticky {
     .dropdown .dropdown-menu {
         transition-delay: 0.1s;
     }
+  
+
+    
 }
 
 /* Mobile Responsive Design */
@@ -348,9 +375,17 @@ header.navbar.sticky {
         padding: 10px;
     }
 
+    .navbar .btn-primary,
+    .logout-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+    }
     .login-container {
         width: 100%;
         margin: 15px 0 5px 0;
+        
+        
     }
     
     .translation-controls {
@@ -370,6 +405,11 @@ header.navbar.sticky {
         text-align: center;
         justify-content: center;
     }
+    .login-item{
+      
+        display: grid;
+    }
+   
 }
 
 /* ===== Animations ===== */

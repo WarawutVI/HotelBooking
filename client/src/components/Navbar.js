@@ -108,9 +108,9 @@ function Navbar() {
                   Service & Facilities
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="facilities-services/restaurants.html">Restaurants</a></li>
+                  <li><a className="dropdown-item" href="/restaurant">Restaurants</a></li>
                   <li><a className="dropdown-item" href="facilities-services/swimming-pool.html">Swimming Pools</a></li>
-                  <li><a className="dropdown-item" href="facilities-services/guest-services.html">Guest Services</a></li>
+                  <li><a className="dropdown-item" href="/guestservice">Guest Services</a></li>
                 </ul>
               </li>
             </ul>

@@ -92,7 +92,7 @@ function Navbar() {
                 <a className="nav-link active" aria-current="page" href="/home">Home</a>
               </li>
               <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                <a className="nav-link dropdown-toggle" href="/rooms" role="button" aria-expanded="false">
                   Rooms
                 </a>
                 <ul className="dropdown-menu">

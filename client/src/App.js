@@ -19,6 +19,7 @@ import DIPLOMAT from './screens/DIPLOMAT';
 import Diplomatbooking from './screens/booking/Diplomatbooking';
 import GRAND from './screens/GRAND';
 import Grandbooking from './screens/booking/Grandbooking';
+import ScrollTopButton from './components/ScrollTopButton';
 
 // Example room data (you can replace this with dynamic data or fetch from API)
 
@@ -31,10 +32,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
+        <ScrollTopButton/>
         <Routes>
           {/* Home Route */}
           <Route path="/home" element={<Homescreen />} />
-          <Route path="/room" element={<Roomscreen />} />
+          <Route path="/rooms" element={<Roomscreen />} />
           {/* Route for rooms list */}
           <Route
             path="/rooms"
@@ -53,6 +55,7 @@ function App() {
           <Route path="/rooms/Deluxecanalroom" element={<DeluxeCalRoomscreen />} />
           <Route path="/rooms/Nouvoroom" element={<NOUVO />} />
           <Route path="/rooms/Diplomatroom" element={<DIPLOMAT />} />
+          
           <Route path="/rooms/GrandDeluxeroom" element={<GRAND/>} />
           <Route path="/register" element={<Registerscreen />} />
           <Route path="/login" element={<Loginscreen />} />

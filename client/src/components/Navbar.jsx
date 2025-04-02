@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import '../css/Navbar.css'; // Import the custom CSS file
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Navbar() {
   const user = JSON.parse(localStorage.getItem("currentUser") || "null");
@@ -9,11 +10,68 @@ function Navbar() {
     window.location.href = "/login"; 
   }
 
-  function resetToDefaultLanguage() {
-    // Logic to reset the language goes here
-    console.log("Language reset to default");
-    // You can add more logic as needed
-  }
+  const resetToDefaultLanguage = () => {
+    const googleTranslateInstance = window.google.translate.TranslateElement.getInstance();
+    if (googleTranslateInstance) {
+      googleTranslateInstance.setEnabled(false); // Disable translation
+    }
+  };
+
+  // Define googleTranslateElementInit before using it
+  window.googleTranslateElementInit = function () {
+    new window.google.translate.TranslateElement({
+      pageLanguage: 'en',
+      layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false // Prevent auto display of the translation dropdown
+    }, 'google_translate_element');
+
+    setTimeout(() => {
+      const navbar = document.querySelector('header.navbar');
+      if (navbar) {
+        navbar.style.zIndex = "1030";
+      }
+    }, 1000);
+  };
+
+  useEffect(() => {
+    // Define googleTranslateElementInit before using it
+    const googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement({
+        pageLanguage: "en",
+        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false,
+      }, "google_translate_element");
+  
+      setTimeout(() => {
+        const navbar = document.querySelector("header.navbar");
+        if (navbar) {
+          navbar.style.zIndex = "1030";
+        }
+      }, 1000);
+    };
+  
+    // Assign to window object
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  
+    if (!window.google) {
+      const script = document.createElement("script");
+      script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      script.async = true;
+      document.body.appendChild(script);
+    } else {
+      googleTranslateElementInit();
+    }
+  
+    return () => {
+      const existingScript = document.querySelector(
+        'script[src="//translate.google.com/translate_a/element.js"]'
+      );
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+  
 
   return (
     <div>
@@ -45,7 +103,6 @@ function Navbar() {
                   <li><a className="dropdown-item" href="/rooms/Nouvoroom">Nouvo Suites</a></li>
                 </ul>
               </li>
-
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
                   Service & Facilities
@@ -59,8 +116,8 @@ function Navbar() {
             </ul>
             <div className="login-container">
               {user ? (
-                <div className="login-item" >
-                  <h6 className="user-name" style={{ marginRight:"20px", marginTop:"8px"}} >{user.name}</h6>
+                <div className="login-item">
+                  <h6 className="user-name" style={{ marginRight: "20px", marginTop: "8px" }}>{user.name}</h6>
                   <button className="logout-btn" onClick={logout}>Logout</button>
                 </div>
               ) : (

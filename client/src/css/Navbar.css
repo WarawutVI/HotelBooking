@@ -1,0 +1,419 @@
+/* navbar.css */
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+/* Base styles and variables */
+:root {
+    /* Updated color palette */
+    --dark-navy: #1D2330;    /* Dark navy blue from palette */
+    --medium-blue: #0D5C9E;  /* Medium blue from palette */
+    --light-blue: #4B96C4;   /* Light blue from palette */
+    --beige: #CCBBB8;        /* Beige/taupe from palette */
+    --bright-yellow: #FFCC45; /* Bright yellow from palette */
+    
+    /* Application of palette */
+    --bg-color: #fff;
+    --primary-color: var(--dark-navy);
+    --second-color: var(--medium-blue);
+    --accent-color: var(--bright-yellow);
+    --neutral-color: var(--beige);
+    --hover-bg-color: rgba(75, 150, 196, 0.1);
+    --shadow-1: 0px 2px 10px rgba(29, 35, 48, 0.3);
+    --light-highlight: #E8F1F8;
+    --translate-bg: rgba(13, 92, 158, 0.05);
+    --translate-border: rgba(13, 92, 158, 0.15);
+    --translate-hover-bg: rgba(13, 92, 158, 0.1);
+    --translate-hover-border: rgba(13, 92, 158, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+}
+
+body {
+    /* background: url("/Image/LivingRoomReimagined.jpg") center/cover fixed; */
+    min-height: 200vh;
+    top: 0 !important; /* Override Google Translate body positioning */
+    padding-top: 0px; /* Space for Google Translate bar */
+}
+
+/* ===== Navbar Styling ===== */
+header.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+    padding: 5px 30px;
+    z-index: 1030 !important;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+header.navbar.sticky {
+    padding: 10px 30px;
+    background: var(--accent-color) !important;
+    backdrop-filter: none;
+    box-shadow: var(--shadow-1);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* ===== Navbar Navigation ===== */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-nav .nav-item {
+    position: relative;
+    margin: 0 5px;
+}
+
+.navbar-nav .nav-item:hover {
+    background: var(--hover-bg-color);
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 1rem;
+    padding: 10px 15px;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--second-color);
+}
+
+/* Underline animation effect */
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 15%;
+    width: 0;
+    height: 2px;
+    background-color: var(--second-color);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 70%;
+}
+
+/* ===== Dropdown Menu ===== */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.7rem;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--second-color);
+}
+
+.dropdown-menu {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(29, 35, 48, 0.1);
+    padding: 5px 0;
+    min-width: 200px;
+    transition: all 0.3s ease;
+    display: none;
+    background-color: var(--bg-color);
+}
+
+.dropdown-menu.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    color: var(--second-color);
+    background-color: var(--hover-bg-color);
+}
+
+/* ===== Login Button ===== */
+.login-container {
+    margin-left: 15px;
+}
+
+
+.login-btn {
+    background-color: var(--second-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: var(--dark-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(29, 35, 48, 0.2);
+}
+
+
+
+.logout-btn {
+    background-color: var(--second-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: var(--dark-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(29, 35, 48, 0.2);
+}
+
+/* ===== Translation Controls ===== */
+.translation-controls {
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+    background-color: var(--translate-bg);
+    border-radius: 8px;
+    padding: 4px 8px;
+    border: 1px solid var(--translate-border);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1031;
+}
+
+.translation-controls:hover {
+    background-color: var(--translate-hover-bg);
+    border-color: var(--translate-hover-border);
+    box-shadow: 0 3px 8px rgba(13, 92, 158, 0.1);
+}
+
+/* ===== Google Translate Element ===== */
+#google_translate_element {
+    position: relative;
+}
+
+.goog-te-gadget {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 13px !important;
+    color: var(--dark-navy) !important;
+    margin: 0 !important;
+}
+
+.goog-te-gadget-simple {
+    background-color: white !important;
+    border: 1px solid rgba(13, 92, 158, 0.3) !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.goog-te-gadget-simple:hover {
+    border-color: var(--second-color) !important;
+    box-shadow: 0 2px 6px rgba(13, 92, 158, 0.15) !important;
+    transform: translateY(-1px);
+}
+
+.goog-te-gadget-simple .goog-te-menu-value {
+    color: var(--dark-navy) !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value span:first-child {
+    display: none !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value span:not(:last-child) {
+    border-color: rgba(13, 92, 158, 0.2) !important;
+    margin-right: 4px !important;
+}
+
+.goog-te-gadget-simple img {
+    opacity: 0.7 !important;
+}
+
+/* Style the Google Translate select dropdown */
+.goog-te-combo {
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    color: var(--dark-navy) !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding-right: 0 !important;
+}
+
+/* ===== Reset Language Button ===== */
+.reset-language-btn {
+    background-color: white;
+    border: 1px solid rgba(13, 92, 158, 0.3);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--second-color);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.login-item{
+    display:flex;
+}
+
+.reset-language-btn:hover {
+    background-color: var(--second-color);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(13, 92, 158, 0.15);
+    border-color: var(--second-color);
+}
+
+.reset-language-btn::before {
+    /* content: '🇬🇧'; */
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+/* ===== Google Translate Fixes ===== */
+.goog-te-banner-frame {
+    top: 0px !important;
+    z-index: 1029 !important;
+}
+
+.skiptranslate iframe {
+    visibility: hidden !important;
+}
+
+/* ===== Responsive Design ===== */
+/* Desktop Dropdown Behavior */
+@media (min-width: 992px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+    
+    .dropdown .dropdown-menu {
+        transition-delay: 0.1s;
+    }
+  
+
+    
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 991px) {
+    header.navbar {
+        padding: 15px 20px;
+    }
+
+    .navbar-toggler {
+        border: none;
+        background: transparent;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar-nav .dropdown-menu {
+        display: none;
+        border: none;
+        padding-left: 15px;
+        box-shadow: none;
+        background-color: transparent;
+    }
+    
+    .navbar-nav .dropdown-menu.show {
+        display: block;
+    }
+
+    .navbar .btn-primary,
+    .login-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .navbar .btn-primary,
+    .logout-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+    }
+    .login-container {
+        width: 100%;
+        margin: 15px 0 5px 0;
+        
+        
+    }
+    
+    .translation-controls {
+        margin: 15px 0;
+        width: 100%;
+        justify-content: center;
+        padding: 6px 10px;
+    }
+    
+    #google_translate_element {
+        margin-right: 8px;
+    }
+    
+    .reset-language-btn,
+    .goog-te-gadget-simple {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+    }
+    .login-item{
+      
+        display: grid;
+    }
+   
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

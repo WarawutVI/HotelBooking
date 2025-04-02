@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../css/Admin.css";
 
 function Admin() {
   const [rooms, setRooms] = useState([]);
-  const [editMode, setEditMode] = useState({}); // Track edit mode for each booking
+  const [editMode, setEditMode] = useState({});
 
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/rooms/getallrooms"
-        );
+        const response = await axios.get("http://localhost:5000/api/rooms/getallrooms");
         setRooms(response.data || []);
       } catch (error) {
         console.error("Error fetching rooms:", error);
@@ -27,7 +26,7 @@ function Admin() {
     }));
   };
 
-  const handleEdit = async (roomId, index, updatedBooking) => {
+  const handleSaveEdit = async (roomId, index, updatedBooking) => {
     try {
       const updatedRooms = rooms.map((room) => {
         if (room._id === roomId) {
@@ -39,16 +38,11 @@ function Admin() {
       });
 
       setRooms(updatedRooms);
+      setEditMode((prev) => ({ ...prev, [`${roomId}-${index}`]: false })); // Exit edit mode
 
-      await axios.put(
-        `http://localhost:5000/api/rooms/updatebooking/${roomId}`,
-        {
-          currentbookings: updatedRooms.find((room) => room._id === roomId)
-            .currentbookings,
-        }
-      );
-
-
+      await axios.put(`http://localhost:5000/api/rooms/updatebooking/${roomId}`, {
+        currentbookings: updatedRooms.find((room) => room._id === roomId).currentbookings,
+      });
     } catch (error) {
       console.error("Error updating booking:", error);
       alert("Failed to update booking.");
@@ -68,15 +62,9 @@ function Admin() {
 
       setRooms(updatedRooms);
 
-      await axios.put(
-        `http://localhost:5000/api/rooms/updatebooking/${roomId}`,
-        {
-          currentbookings: updatedRooms.find((room) => room._id === roomId)
-            .currentbookings,
-        }
-      );
-
-  
+      await axios.put(`http://localhost:5000/api/rooms/updatebooking/${roomId}`, {
+        currentbookings: updatedRooms.find((room) => room._id === roomId).currentbookings,
+      });
     } catch (error) {
       console.error("Error deleting booking:", error);
       alert("Failed to delete booking.");
@@ -84,13 +72,13 @@ function Admin() {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-5" style={{ display: "grid", width: "100%" }}>
       <h2>Admin Panel - Room Bookings</h2>
       {rooms.length === 0 ? (
         <p>Loading rooms...</p>
       ) : (
         rooms.map((room) => (
-          <div key={room._id} className="card mb-4 p-3">
+          <div key={room._id} className="card mb-4 p-3" style={{ width: "100%" }}>
             <h4>{room.name}</h4>
             <p>Rent per day: {room.rentperday} THB</p>
 
@@ -118,7 +106,7 @@ function Admin() {
                             type="text"
                             value={booking.name}
                             onChange={(e) =>
-                              handleEdit(room._id, index, {
+                              handleSaveEdit(room._id, index, {
                                 ...booking,
                                 name: e.target.value,
                               })
@@ -135,7 +123,7 @@ function Admin() {
                             type="date"
                             value={booking.startDate}
                             onChange={(e) =>
-                              handleEdit(room._id, index, {
+                              handleSaveEdit(room._id, index, {
                                 ...booking,
                                 startDate: e.target.value,
                               })
@@ -152,7 +140,7 @@ function Admin() {
                             type="date"
                             value={booking.endDate}
                             onChange={(e) =>
-                              handleEdit(room._id, index, {
+                              handleSaveEdit(room._id, index, {
                                 ...booking,
                                 endDate: e.target.value,
                               })
@@ -169,7 +157,7 @@ function Admin() {
                             type="number"
                             value={booking.amount}
                             onChange={(e) =>
-                              handleEdit(room._id, index, {
+                              handleSaveEdit(room._id, index, {
                                 ...booking,
                                 amount: e.target.value,
                               })
@@ -186,7 +174,7 @@ function Admin() {
                             className="form-control"
                             value={booking.breakfast ? "Yes" : "No"}
                             onChange={(e) =>
-                              handleEdit(room._id, index, {
+                              handleSaveEdit(room._id, index, {
                                 ...booking,
                                 breakfast: e.target.value === "Yes",
                               })
@@ -207,7 +195,7 @@ function Admin() {
                             type="text"
                             value={booking.extraServices.join(", ")}
                             onChange={(e) =>
-                              handleEdit(room._id, index, {
+                              handleSaveEdit(room._id, index, {
                                 ...booking,
                                 extraServices: e.target.value.split(", "),
                               })
@@ -224,7 +212,7 @@ function Admin() {
                             type="number"
                             value={booking.totalPrice}
                             onChange={(e) =>
-                              handleEdit(room._id, index, {
+                              handleSaveEdit(room._id, index, {
                                 ...booking,
                                 totalPrice: e.target.value,
                               })
@@ -238,8 +226,12 @@ function Admin() {
                       <td>
                         <button
                           className="btn btn-primary btn-sm"
-                          onClick={() => handleEditToggle(room._id, index)}
-                          style={{ marginRight: "10px" }} // Add margin to create space
+                          onClick={() =>
+                            editMode[`${room._id}-${index}`]
+                              ? handleSaveEdit(room._id, index, booking)
+                              : handleEditToggle(room._id, index)
+                          }
+                          style={{ marginRight: "10px" }}
                         >
                           {editMode[`${room._id}-${index}`] ? "Save" : "Edit"}
                         </button>

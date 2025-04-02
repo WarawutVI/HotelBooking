@@ -1,0 +1,22 @@
+/* LoginScreen.css */
+
+html, body {
+    height: 100%; /* Ensure full height for centering */
+    margin: 0; /* Remove default margin */
+}
+
+.boxcrad {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 90vh; /* Full viewport height */
+}
+
+.row {
+    width: 100%; /* Ensure the row takes full width */
+    max-width: 700px; /* Limit the width of the form */
+    padding: 20px; /* Optional: Add some padding */
+    background-color:white;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}

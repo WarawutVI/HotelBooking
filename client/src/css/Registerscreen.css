@@ -1,5 +1,19 @@
-.boxcrad{
-    border: solid red 5px;
-    margin-left: 25%;
-    margin-right: 25%;
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Full height of the viewport */
+}
+
+.boxcard {
+    background-color: white; /* Optional: Add a background color */
+    padding: 20px; /* Optional: Add padding */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    width: 700px; /* Fixed width for the card */
 }

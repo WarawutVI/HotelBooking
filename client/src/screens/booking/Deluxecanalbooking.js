@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Spinner, Alert } from "react-bootstrap";
@@ -123,10 +122,9 @@ function UpdateRoomBooking() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{display:"grid"}}>
       <h2>Deluxe canal room</h2>
 
-     
 
       {/* Room Price */}
       {room && (

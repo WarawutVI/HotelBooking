@@ -1,0 +1,30 @@
+
+/* ==========  section 0 image sliding ============ */
+
+/*============Adjust carousel image size ===========*/
+#carouselHeaderBanner .carousel-item img {
+    /* opacity: 0; */
+    width: 100%;
+    height: 700px; /* Adjust height as needed */
+    object-fit: cover;/* Ensures the image covers the entire area */
+}
+
+/*========= Style for captions =============*/
+#carouselHeaderBanner .carousel-caption {
+    /* background: rgba(0, 0, 0, 0.4); Semi-transparent background */
+    padding: 15px;
+    border-radius: 10px;
+    /* font-size: 50px; */
+    text-shadow: 3px 3px black ;
+    margin-bottom: 50px;
+}
+
+#carouselHeaderBanner .carousel-caption h1{
+    font-size: 60px;
+}
+
+#carouselHeaderBanner .carousel-caption h5{
+    font-size: 30px;
+}
+
+/* now this part of code is have 5 pic but when its slide to fourth pic its stop slide */

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import '../css/ScrollTopButton.css'
+
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 const ScrollTopButton = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [buttonColor, setButtonColor] = useState('#FFCF47'); // Default color
@@ -8,8 +10,7 @@ const ScrollTopButton = () => {
         const handleScroll = () => {
             if (window.pageYOffset > 300) {
                 setIsVisible(true);
-                // Change color based on scroll position or other conditions
-            
+              
             } else {
                 setIsVisible(false);
             }

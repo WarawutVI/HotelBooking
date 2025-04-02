@@ -53,7 +53,7 @@ function App() {
           {/* Individual Room Routes */}
           <Route path="/rooms/Superiorclassicroom" element={<SuperiorClassicRoomscreen />} />
           <Route path="/rooms/Deluxecanalroom" element={<DeluxeCalRoomscreen />} />
-          <Route path="/rooms/Nouvoroom" element={<NOUVO />} />
+          <Route path="/rooms/NouvoGrandSuiteRoom" element={<NOUVO />} />
           <Route path="/rooms/Diplomatroom" element={<DIPLOMAT />} />
           
           <Route path="/rooms/GrandDeluxeroom" element={<GRAND/>} />

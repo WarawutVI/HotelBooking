@@ -9,7 +9,7 @@ const Section1 = () => {
   ];
 
   return (
-    <div>
+    <div className='box-controll'>
       <div className="box">
         <div className="item1">
           <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">

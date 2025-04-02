@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Room from "../components/Room";
+import"../css/Roomscreen.css"
 
 function Roomscreen() {
   const [rooms, setRooms] = useState([]); // Ensures `rooms` is always an array
@@ -29,17 +30,24 @@ function Roomscreen() {
   }, []);
 
   return (
-    <div>
+    <div className="obj-room">
       <div className="container">
         <h1 className="mt-4">Rooms</h1>
-        {rooms.length > 0 ? (
-          rooms.map((room, index) => <Room key={index} room={room} />)
-        ) : (
-          <p>Loading rooms...</p>
-        )}
+        <div className="rooms-grid">
+          {rooms.length > 0 ? (
+            rooms.map((room, index) => (
+              <div className="room-card" key={index}>
+                <Room room={room} />
+              </div>
+            ))
+          ) : (
+            <p>Loading rooms...</p>
+          )}
+        </div>
       </div>
     </div>
   );
+  
 }
 
 export default Roomscreen;

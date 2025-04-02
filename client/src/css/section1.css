@@ -20,13 +20,14 @@
 
 .box {
     display: flex;
-    align-items: center;
+    
     position: relative;
     max-width: 1200px;
     width: 100%;
-    margin-left:20%;
-    
-   
+}
+.box-controll{
+    display: flex;
+   align-items: center;
 }
 
 .item1 {
@@ -193,3 +194,13 @@
         margin: 15px auto 0;
     }
 }
+
+.box-controll {
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;      /* Centers vertically */          /* Adjust based on your layout */
+    
+}
+
+
+

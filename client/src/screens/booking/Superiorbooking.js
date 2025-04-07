@@ -14,7 +14,22 @@ function UpdateRoomBooking() {
   const [successMessage, setSuccessMessage] = useState("");
   const [receipt, setReceipt] = useState(null);
   const [room, setRoom] = useState([]); 
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
+
+
+  const handleCancel = () => {
+    setStartDate("");
+    setEndDate("");
+    setAmount(1);
+    setBreakfast(false);
+    setExtraServices([]);
+    setErrorMessage("");
+    setSuccessMessage("");
+    setReceipt(null);
+    setIsConfirmed(false);
+  };
+  
   const user = JSON.parse(localStorage.getItem("currentUser") || "null");
 
   useEffect(() => {
@@ -130,7 +145,7 @@ function UpdateRoomBooking() {
       {room && (
         <div className="mb-3">
           <label className="form-label">Room Price:</label>
-          <div>{`$${room.rentperday} per day`}</div>
+          <div>{`฿${room.rentperday} per day`}</div>
         </div>
       )}
 
@@ -176,7 +191,7 @@ function UpdateRoomBooking() {
             checked={breakfast}
             onChange={(e) => setBreakfast(e.target.checked)}
           />
-          Add Breakfast ($10)
+          Add Breakfast (฿10)
         </label>
       </div>
 
@@ -190,7 +205,7 @@ function UpdateRoomBooking() {
               value="Spa"
               onChange={handleExtraServiceChange}
             />
-            Spa ($50)
+            Spa (฿50)
           </label>
         </div>
         <div>
@@ -200,7 +215,7 @@ function UpdateRoomBooking() {
               value="Airport Transfer"
               onChange={handleExtraServiceChange}
             />
-            Airport Transfer ($30)
+            Airport Transfer (฿30)
           </label>
         </div>
         <div>
@@ -210,7 +225,7 @@ function UpdateRoomBooking() {
               value="Late Check-Out"
               onChange={handleExtraServiceChange}
             />
-            Late Check-Out ($20)
+            Late Check-Out (฿20)
           </label>
         </div>
       </div>
@@ -238,25 +253,55 @@ function UpdateRoomBooking() {
       )}
 
       {/* Receipt Section */}
-      {receipt && (
-        <div className="mt-5">
-          <h3>Booking Receipt</h3>
-          <ul>
-             <li><strong>User:</strong> {user?.name}</li>
-            <li><strong>Room Type:</strong> {receipt.roomType}</li>
-            <li><strong>From:</strong> {receipt.startDate}</li>
-            <li><strong>To:</strong> {receipt.endDate}</li>
-            <li><strong>Number of Rooms:</strong> {receipt.amount}</li>
-            <li><strong>Breakfast:</strong> {receipt.breakfast ? "Yes ($10)" : "No"}</li>
-            <li><strong>Extra Services:</strong>
-              {receipt.extraServices.length > 0
-                ? receipt.extraServices.join(", ")
-                : "None"}
-            </li>
-            <li><strong>Total Price:</strong> ${receipt.totalPrice}</li>
-          </ul>
-        </div>
-      )}
+{receipt && (
+  <div className="mt-5">
+    <h3>Booking Receipt</h3>
+    <ul>
+      <li><strong>User:</strong> {user?.name}</li>
+      <li><strong>Room Type:</strong> {receipt.roomType}</li>
+      <li><strong>From:</strong> {receipt.startDate}</li>
+      <li><strong>To:</strong> {receipt.endDate}</li>
+      <li><strong>Number of Rooms:</strong> {receipt.amount}</li>
+      <li><strong>Breakfast:</strong> {receipt.breakfast ? "Yes (฿10)" : "No"}</li>
+      <li><strong>Extra Services:</strong>
+        {receipt.extraServices.length > 0
+          ? receipt.extraServices.join(", ")
+          : "None"}
+      </li>
+      <li><strong>Total Price:</strong> ฿{receipt.totalPrice}</li>
+    </ul>
+
+    {/* Confirm Order Button */}
+
+    {!isConfirmed && (
+  <>
+    <button
+      className="btn btn-success mt-3 me-2"
+      onClick={() => setIsConfirmed(true)}
+    >
+      Confirm Order
+    </button>
+    <button className="btn btn-secondary mt-3" onClick={handleCancel}>
+      Cancel
+    </button>
+  </>
+)}
+
+    
+
+    {/* Image After Confirmation */}
+    {isConfirmed && (
+      <div className="mt-4 text-center">
+        <h4>Thank you for your booking!</h4>
+        <img
+          src="/Image/Qrcode.jpg" // Replace with your desired image
+          alt="Booking Confirmed"
+          style={{ maxWidth: "300px", marginTop: "10px" }}
+        />
+      </div>
+    )}
+  </div>
+)}
     </div>
   );
 }

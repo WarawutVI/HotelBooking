@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    list-style: none;
+}
+.container-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 0 2rem;
+}
+
+.title {
+    background: linear-gradient(135deg, #1a3c5b, #2a5e8c);
+    padding: 1.5rem;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+}
+
+.title h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+/* Restaurant Sections Styling */
+.container-restaurant {
+    padding: 4rem 2rem;
+    background-color: #fff;
+}
+
+.container-restaurant:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.restaurant-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.restaurant-content.reversed {
+    flex-direction: row-reverse;
+}
+
+.restaurant-slider {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-slider .carousel-item img {
+    height: 450px;
+    object-fit: cover;
+}
+
+.restaurant-info {
+    flex: 1;
+    padding: 1rem;
+}
+
+.restaurant-info h2 {
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.restaurant-info h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #f4d03f;
+}
+
+.restaurant-info > p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.restaurant-details {
+    margin: 2rem 0;
+}
+
+.detail-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.detail-item i {
+    color: #f4d03f;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+}
+
+.detail-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.detail-item p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-view-menu, .btn-reserve, .btn-book-now, .btn-inquire {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-view-menu {
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #f4d03f;
+}
+
+.btn-view-menu:hover {
+    background-color: #f4d03f;
+    color: #fff;
+}
+
+.btn-reserve, .btn-book-now, .btn-inquire {
+    background-color: #f4d03f;
+    color: #333;
+    border: 2px solid #f4d03f;
+}
+
+.btn-reserve:hover, .btn-book-now:hover, .btn-inquire:hover {
+    background-color: #e6c52c;
+    border-color: #e6c52c;
+}
+
+/* Special Offers Section */
+.special-offers {
+    padding: 5rem 2rem;
+    background-color: #f8f9fa;
+}
+
+.special-offers-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.special-offers h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #333;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.special-offers h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #f4d03f;
+}
+
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.offer-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.offer-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.offer-content {
+    padding: 1.5rem;
+}
+
+.offer-content h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.offer-content p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.offer-price {
+    font-weight: 600;
+    color: #f4d03f !important;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem !important;
+}
+
+.btn-book-now {
+    display: block;
+    width: 100%;
+}
+
+/* Private Dining Section */
+.private-dining {
+    padding: 5rem 2rem;
+    background-color: #fff;
+}
+
+.private-dining-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.private-dining-content {
+    flex: 1;
+}
+
+.private-dining-content h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.private-dining-content h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #f4d03f;
+}
+
+.private-dining-content p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.private-dining-image {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.private-dining-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .restaurant-content {
+        flex-direction: column;
+    }
+    
+    .restaurant-content.reversed {
+        flex-direction: column;
+    }
+    
+    .restaurant-slider, .restaurant-info {
+        width: 100%;
+    }
+    
+    .offers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .private-dining-container {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 768px) {
+    .restaurant-slider .carousel-item img {
+        height: 350px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-view-menu, .btn-reserve {
+        width: 100%;
+    }
+    
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-restaurant {
+        padding: 3rem 1rem;
+    }
+    
+    .restaurant-slider .carousel-item img {
+        height: 250px;
+    }
+    
+    .restaurant-info h2 {
+        font-size: 1.5rem;
+    }
+    
+    .restaurant-info > p {
+        font-size: 1rem;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+    }
+    
+    .detail-item i {
+        margin-bottom: 0.5rem;
+    }
+    
+    .special-offers, .private-dining {
+        padding: 3rem 1rem;
+    }
+}

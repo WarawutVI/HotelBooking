@@ -4,8 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const ScrollTopButton = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [buttonColor, setButtonColor] = useState('#FFCF47'); // Default color
-
+    const [buttonColor, setButtonColor] = useState('#FFCF47'); 
     useEffect(() => {
         const handleScroll = () => {
             if (window.pageYOffset > 300) {

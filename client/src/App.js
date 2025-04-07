@@ -18,14 +18,15 @@ import Nouvobooking from './screens/booking/Nouvobooking';
 import DIPLOMAT from './screens/DIPLOMAT';
 import Diplomatbooking from './screens/booking/Diplomatbooking';
 import GRAND from './screens/GRAND';
+import Restaurant from './screens/Restaurant';
 import Grandbooking from './screens/booking/Grandbooking';
 import ScrollTopButton from './components/ScrollTopButton';
-
-// Example room data (you can replace this with dynamic data or fetch from API)
+import Guestservice from './screens/Guestservice';
+import Swimmingpool from './screens/Swimmingpool';
 
 
 function App() {
-  const [rooms, setRooms] = useState([]); // Ensures `rooms` is always an array
+  const [rooms, setRooms] = useState([]); 
 
   
   return (
@@ -65,6 +66,10 @@ function App() {
           <Route path='/booking/diplomat' element={<Diplomatbooking/>}/>
           <Route path='/booking/grand' element={<Grandbooking/>}/>
           <Route path='/admin' element={<Admin/>}/>
+          <Route path='/restaurant' element={<Restaurant/>}/>
+          <Route path='/guestservice' element={<Guestservice/>}/>
+          <Route path='/swimmingpool' element={<Swimmingpool/>}/>
+       
         </Routes>
       </BrowserRouter>
     </div>

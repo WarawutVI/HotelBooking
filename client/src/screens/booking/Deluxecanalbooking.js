@@ -14,6 +14,20 @@ function UpdateRoomBooking() {
   const [successMessage, setSuccessMessage] = useState("");
   const [receipt, setReceipt] = useState(null);
   const [room, setRoom] = useState([]); 
+  const [isConfirmed, setIsConfirmed] = useState(false);
+
+  const handleCancel = () => {
+    setStartDate("");
+    setEndDate("");
+    setAmount(1);
+    setBreakfast(false);
+    setExtraServices([]);
+    setErrorMessage("");
+    setSuccessMessage("");
+    setReceipt(null);
+    setIsConfirmed(false);
+  };
+
 
   const user = JSON.parse(localStorage.getItem("currentUser") || "null");
 

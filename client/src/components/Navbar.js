@@ -100,7 +100,7 @@ function Navbar() {
                   <li><a className="dropdown-item" href="/rooms/Deluxecanalroom">Deluxe Canal Room</a></li>
                   <li><a className="dropdown-item" href="/rooms/Granddeluxeroom">Grand Deluxe Room</a></li>
                   <li><a className="dropdown-item" href="/rooms/Diplomatroom">Diplomat Room</a></li>
-                  <li><a className="dropdown-item" href="/rooms/Nouvoroom">Nouvo Suites</a></li>
+                  <li><a className="dropdown-item" href="/rooms/NouvoGrandSuiteRoom">Nouvo Suites</a></li>
                 </ul>
               </li>
               <li className="nav-item dropdown">
@@ -109,7 +109,7 @@ function Navbar() {
                 </a>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="/restaurant">Restaurants</a></li>
-                  <li><a className="dropdown-item" href="facilities-services/swimming-pool.html">Swimming Pools</a></li>
+                  <li><a className="dropdown-item" href="/swimmingpool">Swimming Pools</a></li>
                   <li><a className="dropdown-item" href="/guestservice">Guest Services</a></li>
                 </ul>
               </li>

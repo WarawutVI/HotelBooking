@@ -22,6 +22,7 @@ import Restaurant from './screens/Restaurant';
 import Grandbooking from './screens/booking/Grandbooking';
 import ScrollTopButton from './components/ScrollTopButton';
 import Guestservice from './screens/Guestservice';
+import Swimmingpool from './screens/Swimmingpool';
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/restaurant' element={<Restaurant/>}/>
           <Route path='/guestservice' element={<Guestservice/>}/>
+          <Route path='/swimmingpool' element={<Swimmingpool/>}/>
        
         </Routes>
       </BrowserRouter>
